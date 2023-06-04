@@ -4,7 +4,9 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+ul,
+li {
   margin: 0;
 }
 
@@ -14,8 +16,19 @@ ul {
   list-style: none;
 }
 
+li {
+  list-style: none;
+}
+
 a {
+  padding: 0;
+  margin: 0;
   text-decoration: none;
+}
+
+img {
+  display: block;
+  object-fit: contain;
 }
 
 .container {
