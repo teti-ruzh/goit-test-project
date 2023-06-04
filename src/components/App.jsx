@@ -1,16 +1,21 @@
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { lazy } from 'react';
+import Layout from './Layout';
+import css from './App.module.css';
+
 export const App = () => {
+  const HomePage = lazy(() => import('../pages/Home'));
+  const TweetsPage = lazy(() => import('../pages/Tweets'));
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      React homework template
+    <div className={css.container}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/tweets" element={<TweetsPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
     </div>
   );
 };

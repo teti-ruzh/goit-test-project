@@ -1,0 +1,28 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 15px;
+  box-shadow: rgba(120, 147, 230, 0.4) 0px 7px 5px -5px,
+    rgba(120, 147, 230, 0.3) 0px 14px 5px -5px,
+    rgba(120, 147, 230, 0.2) 0px 21px 5px -5px,
+    rgba(120, 147, 230, 0.1) 0px 25px 5px -5px;
+}
+
+.link {
+  display: inline-block;
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 400;
+  text-align: center;
+  font-size: 20px;
+  font-size: 1.35rem;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+  color: rgb(255, 255, 255);
+}
+
+.link.active {
+  color: #5e30f4;
+}

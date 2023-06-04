@@ -1,0 +1,32 @@
+.container {
+  min-height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100px;
+  gap: 20px;
+}
+
+.title {
+  font-weight: 200;
+  margin-top: 50px;
+  text-align: center;
+  font-size: 50px;
+  font-size: 3rem;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+  color: rgb(255, 255, 255);
+}
+
+.subtitle {
+  font-weight: 200;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 25px;
+  font-size: 1.8rem;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+  color: rgb(255, 255, 255);
+  opacity: 0.8;
+}
