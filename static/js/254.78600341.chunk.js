@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[254],{254:function(e,t,n){n.r(t),n.d(t,{default:function(){return a}});var c={container:"Tweets_container__8gf6+"},r=n(184);function a(){return(0,r.jsx)("div",{className:c.container,children:(0,r.jsx)("h1",{className:c.title,children:"Wellcome to Tweets"})})}}}]);
-//# sourceMappingURL=254.78600341.chunk.js.map
