@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/goit-test-project/static/css/main.7acaea2f.css",
+    "main.js": "/goit-test-project/static/js/main.1fb3d195.js",
+    "index.html": "/goit-test-project/index.html",
+    "main.7acaea2f.css.map": "/goit-test-project/static/css/main.7acaea2f.css.map",
+    "main.1fb3d195.js.map": "/goit-test-project/static/js/main.1fb3d195.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7acaea2f.css",
+    "static/js/main.1fb3d195.js"
+  ]
+}
