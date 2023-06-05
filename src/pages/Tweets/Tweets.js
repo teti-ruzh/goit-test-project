@@ -40,7 +40,6 @@ export default function Tweets() {
 
   useEffect(() => {
     setIsloading(true);
-    // setShowLoadMore(false);
     api
       .getTweets(page)
       .then(results => {
@@ -66,6 +65,10 @@ export default function Tweets() {
     setPage(page => page + 1);
   };
 
+  useEffect(() => {
+    if (users.length === totalusers) Notify.info('Sorry, no more users found');
+  }, [users, totalusers]);
+
   return (
     <div className={css.container}>
       {isLoading && <Loader />}
@@ -76,7 +79,7 @@ export default function Tweets() {
       <ul className={css.gallery}>
         {users &&
           users.map(tweet => {
-            return <TweetsItem {...tweet} key={tweet.id} name={tweet.user} />;
+            return <TweetsItem {...tweet} key={tweet.id} />;
           })}
       </ul>
       {showLoadMore && (

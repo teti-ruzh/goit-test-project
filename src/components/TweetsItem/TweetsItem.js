@@ -6,7 +6,7 @@ import userDfltImg from '../../images/userDfltImg.png';
 
 import css from './TweetsItem.module.css';
 
-const TweetsItem = ({ id, name, tweets, avatar, followers }) => {
+const TweetsItem = ({ id, tweets, avatar, followers }) => {
   const user = JSON.parse(localStorage.getItem(`user${id}`)) ?? false;
   const userFollowing = user.following;
   const [isFollowing, setIsFollowing] = useState(userFollowing);
@@ -28,10 +28,8 @@ const TweetsItem = ({ id, name, tweets, avatar, followers }) => {
       JSON.parse(localStorage.getItem('followingUsers')).includes(userId)
     ) {
       const index = localFollowingUsers.indexOf(userId);
-      //   console.log(index);
       localFollowingUsers.splice(index, 1);
       const newArr = Array.from(new Set(localFollowingUsers));
-      //   console.log(newArr);
       localStorage.setItem('followingUsers', JSON.stringify(newArr));
     } else {
       localFollowingUsers.push(userId);
@@ -78,7 +76,6 @@ const TweetsItem = ({ id, name, tweets, avatar, followers }) => {
           )}
         </div>
         <ul className={css.info}>
-          <li className={css.name}>{name}</li>
           <li>{tweets} Tweets</li>
           <li>
             {isFollowing
@@ -105,9 +102,6 @@ const TweetsItem = ({ id, name, tweets, avatar, followers }) => {
             Follow
           </button>
         )}
-        {/* <button className={css.followBtn} type="button">
-          Follow
-        </button> */}
       </div>
     </li>
   );
