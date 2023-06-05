@@ -1,15 +1,18 @@
 import { useLocation, Link } from 'react-router-dom';
 import { useRef, useState, useEffect } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import getTweets from '../../services/tweets-api';
+import api from '../../services/tweets-api';
 import TweetsItem from '../../components/TweetsItem';
+import Loader from '../../components/Loader';
 
 import css from './Tweets.module.css';
 
 export default function Tweets() {
   const [users, setUsers] = useState([]);
+  const [totalusers, setTotalUsers] = useState(null);
   const [page, setPage] = useState(1);
   const [showLoadMore, setShowLoadMore] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
 
   const location = useLocation();
   const pathToBack = useRef(location.state?.from ?? '/');
@@ -22,8 +25,24 @@ export default function Tweets() {
   }, []);
 
   useEffect(() => {
-    setShowLoadMore(false);
-    getTweets(page)
+    api
+      .getAllUsers()
+      .then(results => {
+        if (!results.length) {
+          return;
+        }
+        setTotalUsers(results.length);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  useEffect(() => {
+    setIsloading(true);
+    // setShowLoadMore(false);
+    api
+      .getTweets(page)
       .then(results => {
         if (page === 1 && !results.length) {
           Notify.error('Oops, something went wrong.');
@@ -33,14 +52,15 @@ export default function Tweets() {
           page === 1 ? results : [...prevUsers, ...results]
         );
 
-        setShowLoadMore(true);
-
-        // setShowLoadMore(page < Math.ceil(users / 3));
+        setShowLoadMore(page < Math.ceil(totalusers / 3));
       })
       .catch(error => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsloading(false);
       });
-  }, [page]);
+  }, [page, totalusers]);
 
   const onLoadMore = () => {
     setPage(page => page + 1);
@@ -48,6 +68,7 @@ export default function Tweets() {
 
   return (
     <div className={css.container}>
+      {isLoading && <Loader />}
       <Link to={pathToBack.current} className={css['load-more']}>
         Back
       </Link>

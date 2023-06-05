@@ -1,6 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
-import { Circles } from 'react-loader-spinner';
+import Loader from '../Loader';
 import css from './Layout.module.css';
 
 export default function Layout() {
@@ -16,19 +16,7 @@ export default function Layout() {
           </NavLink>
         </nav>
       </header>
-      <Suspense
-        fallback={
-          <div className={css.loaderBackdrop}>
-            <Circles
-              height="100"
-              width="100"
-              color="#8F81F8"
-              ariaLabel="circles-loading"
-              wrapperClass={css.loading}
-            />
-          </div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
     </div>
